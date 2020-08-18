@@ -36,17 +36,17 @@ PHP MVC Framework
 - look at /pages for more info
   
  # Controllers
- - in app/controllers - create a new file, example: for Posts, create a Posts.php
-    -content:
-    class Pages extends Controller {
-        public function __construct(){
-            $this->postModel = $this->model("Post");
-        }
-        public function index() {       // this function represents the posts route // localhost/projectName/posts/index
-            $posts = $this->postModel->getPosts();
-            $data = ["title" => "Welcome",
-                    "posts" => $posts];
-            $this->view("posts/index", $data); // $data -> the data we pass on to use/render in a view
-        }
-     }
+ - in app/controllers - create a new file, example: for Posts, create a Posts.php <br>
+    -content: <br>
+    class Pages extends Controller { <br>
+        public function __construct(){ <br> 
+            $this->postModel = $this->model("Post"); <br>
+        } <br> 
+        public function index() {       // this function represents the posts route // localhost/projectName/posts/index <br>
+            $posts = $this->postModel->getPosts(); <br>
+            $data = ["title" => "Welcome", <br>
+                    "posts" => $posts]; <br>
+            $this->view("posts/index", $data); // $data -> the data we pass on to use/render in a view <br>
+        } <br> 
+     } <br>
  
