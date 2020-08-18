@@ -17,3 +17,36 @@ PHP MVC Framework
 5. Open a web browser, navigate to "localhost/projectName", and done
 
 # Models - Creating
+- in app/models - create a new file, example: for a post table, Post.php
+    - content
+    class Post {
+        private $db; // Database object
+        public function __construct(){
+            $this->db = new Database();
+        }
+        public function getPosts(){
+            $this->db->query("SELECT * FROM posts");
+            return $this->db->resultSet();
+         }
+    }
+
+# Views - Creating
+- in app/views/ - create a new folder, example: for posts /Posts, in the following folder, create new Views which are going to be rendered on
+   some routes
+- look at /pages for more info
+  
+ # Controllers
+ - in app/controllers - create a new file, example: for Posts, create a Posts.php
+    -content:
+    class Pages extends Controller {
+        public function __construct(){
+            $this->postModel = $this->model("Post");
+        }
+        public function index() {       // this function represents the posts route // localhost/projectName/posts/index
+            $posts = $this->postModel->getPosts();
+            $data = ["title" => "Welcome",
+                    "posts" => $posts];
+            $this->view("posts/index", $data); // $data -> the data we pass on to use/render in a view
+        }
+     }
+ 
